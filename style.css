@@ -1,0 +1,169 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+ 
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #f0f0f0;
+  min-height: 100vh;
+}
+ 
+/* ===== Checkbox oculto ===== */
+.close-input {
+  display: none;
+}
+ 
+/* ===== Popup fixo no canto inferior direito ===== */
+.popup {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  width: 340px;
+  background: #ffffff;
+  border-radius: 14px;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.18);
+  padding: 20px 20px 22px;
+ 
+  /* Animação de entrada */
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+  pointer-events: auto;
+}
+ 
+/* ===== Quando fechado: some ===== */
+.close-input:checked ~ .popup {
+  opacity: 0;
+  transform: translateY(20px) scale(0.95);
+  pointer-events: none;
+}
+ 
+/* ===== Botão fechar (X) ===== */
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  font-size: 1rem;
+  color: #999;
+  cursor: pointer;
+  line-height: 1;
+  padding: 4px 6px;
+  border-radius: 50%;
+  transition: color 0.2s ease, background 0.2s ease;
+  user-select: none;
+}
+ 
+.close-btn:hover {
+  color: #333;
+  background: #f0f0f0;
+}
+ 
+/* ===== Corpo do popup ===== */
+.popup-body {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+ 
+/* ===== Logo ===== */
+.logo {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  flex-shrink: 0;
+ 
+  /* Gradiente rosa/magenta/roxo/ciano igual à imagem */
+  background: conic-gradient(
+    #FF4FCB 0deg,
+    #C429F0 90deg,
+    #7B2FF7 160deg,
+    #00C8FF 230deg,
+    #FF4FCB 360deg
+  );
+ 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+ 
+/* Círculo branco interno com texto */
+.logo::before {
+  content: '';
+  position: absolute;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: #2a2a2a;
+}
+ 
+.logo-text {
+  position: relative;
+  z-index: 1;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 1px;
+}
+ 
+/* ===== Informações do canal ===== */
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+}
+ 
+.channel-name {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  line-height: 1.2;
+}
+ 
+.channel-desc {
+  font-size: 0.78rem;
+  color: #888;
+  font-weight: 400;
+  margin-bottom: 6px;
+}
+ 
+/* ===== Botão Subscribe ===== */
+.subscribe-btn {
+  display: block;
+  width: 100%;
+  padding: 10px 0;
+  border-radius: 8px;
+  background: #00C2CB;
+  color: #ffffff;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  letter-spacing: 0.5px;
+  transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 14px rgba(0, 194, 203, 0.4);
+}
+ 
+.subscribe-btn:hover {
+  background: #00adb5;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(0, 194, 203, 0.55);
+}
+ 
+.subscribe-btn:active {
+  transform: scale(0.97);
+}
+ 
+/* ===== Responsivo ===== */
+@media (max-width: 400px) {
+  .popup {
+    width: calc(100vw - 32px);
+    right: 16px;
+    bottom: 16px;
+  }
+}
+ 
